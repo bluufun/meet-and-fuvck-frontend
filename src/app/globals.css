@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+input::placeholder {
+  font-size: 14px;
+}
+
+.loader {
+  width: 17px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  animation: loader-spin 2s infinite linear;
+}
+
+.loader--black {
+  background: #000;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1 / 1;
+  margin: 15%;
+  border-radius: 50%;
+  background: inherit;
+  transform: rotate(0deg) translate(150%);
+  animation: loader-orbit 1s infinite;
+}
+
+.loader::after {
+  animation-delay: -0.5s;
+}
+
+@keyframes loader-spin {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes loader-orbit {
+  100% {
+    transform: rotate(1turn) translate(150%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
